@@ -1,0 +1,28 @@
+type Grupo {
+    id: ID!
+    nombre: String!
+    descripcion: String
+    permisos(input: PermisoInput, page: PageArgs): [Permiso]
+    usuarios(input: UsuarioInput, page: PageArgs): [Usuario]
+}
+
+input SaveGrupoInput {
+    nombre: String!
+    descripcion: String
+    permisosIDs: [ID]
+}
+
+input UpdateGrupoInput {
+    id: ID!
+    nombre: String
+    descripcion: String
+    permisosIDs: [ID]
+}
+
+input GrupoInput {
+    ids: [ID]
+    nombre: String
+    descripcion: String
+    permisoID: ID
+    usuarioID: ID
+}

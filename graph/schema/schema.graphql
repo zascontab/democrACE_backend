@@ -1,0 +1,84 @@
+directive @everyone on FIELD_DEFINITION
+
+type Query {
+    me: Usuario
+
+   
+    
+    categoria(id: ID!): Categoria
+    categorias(input: CategoriaInput, page: PageArgs): CategoriaNodeConnection
+
+    grupo(id: ID!): Grupo
+    grupos(input: GrupoInput, page: PageArgs): [Grupo]
+
+    permiso(id: ID!): Permiso
+    permisos(input: PermisoInput, page: PageArgs): [Permiso]
+
+   
+    usuario(id: ID!): Usuario
+    usuarios(input: UsuarioInput): [Usuario]
+
+}
+
+type Mutation {
+    login(input: LoginUsuarioInput!): RefreshToken!
+    logout: String!
+    registrar(input: RegistrarUsuarioInput!): Usuario!
+    enviarCodigo(email: String!): String!
+    changePassword(input: ChangePasswordInput!): String!
+    verificarUsuario(email: String!, code: String!): String!
+    getTempToken(refreshToken: String!): TempToken!
+    
+
+    saveCategoria(input: SaveCategoriaInput!): Categoria!
+    updateCategoria(input: UpdateCategoriaInput!): Categoria!
+    deleteCategoria(id: ID!): ID!
+    
+    saveGrupo(input: SaveGrupoInput!): Grupo!
+    updateGrupo(input: UpdateGrupoInput!): Grupo!
+    deleteGrupo(id: ID!): ID!
+
+
+
+    updateUsuario(input: UpdateUsuarioInput!): Usuario!
+    deleteUsuario(id: ID!): ID!
+
+
+}
+
+type RefreshToken {
+    token: String!
+}
+
+type TempToken {
+    token: String!
+}
+
+input ChangePasswordInput {
+    email: String!
+    code: String!
+    newPassword: String!
+}
+
+type Pos {
+    id: ID!
+    posicion: Int!
+}
+
+input PosInput {
+    id: ID!
+    posicion: Int!
+}
+
+input PageArgs {
+  first: Int
+  after: String
+}
+
+type PageInfo {
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+  totalCount: Int
+  startCursor: String
+  endCursor: String
+}

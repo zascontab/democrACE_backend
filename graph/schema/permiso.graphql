@@ -1,0 +1,13 @@
+type Permiso {
+    id: ID!
+    nombre: String!
+    grupos(input: GrupoInput, page: PageArgs): [Grupo]
+    usuarios(input: UsuarioInput, page: PageArgs): [Usuario]
+}
+
+input PermisoInput {
+    ids: [ID]
+    nombre: String
+    grupoID: ID
+    usuarioID: ID
+}

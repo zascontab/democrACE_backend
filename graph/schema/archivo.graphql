@@ -1,0 +1,13 @@
+type Archivo {
+    id: ID!
+    nombre: String!
+}
+
+input ArchivoInput {
+    ids: [ID]
+    nombre: String
+    programaID: ID
+    proyectoID: ID
+    actividadID: ID
+    ejecucionID: ID
+}

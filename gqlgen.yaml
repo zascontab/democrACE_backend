@@ -1,0 +1,164 @@
+# Where are all the schema files located? globs are supported eg  src/**/*.graphqls
+schema:
+  - graph/schema/*.graphql
+
+# Where should the generated server code go?
+exec:
+  filename: graph/generated/generated.go
+  package: generated
+
+# Uncomment to enable federation
+# federation:
+#   filename: graph/generated/federation.go
+#   package: generated
+
+# Where should any generated models go?
+model:
+  filename: graph/model/models_gen.go
+  package: model
+
+# Where should the resolver implementations go?
+resolver:
+  layout: follow-schema
+  dir: graph/resolver
+  package: resolver
+
+# Optional: set to speed up generation time by not performing a final validation pass.
+skip_validation: true
+
+# This section declares type mapping between the GraphQL and go type systems
+#
+# The first line in each type will be used as defaults for resolver arguments and
+# modelgen, the others will be allowed when binding to fields. Configure them to
+# your liking
+models:
+  PageArgs:
+    model: github.com/nrfta/go-paging.PageArgs
+
+  PageInfo:
+    model: github.com/nrfta/go-paging.PageInfo
+
+  Actividad:
+    fields:
+      fechasPlanificadas:
+        resolver: true
+      fechasEjecutadas:
+        resolver: true
+      posicion:
+        resolver: true
+      proyecto:
+        resolver: true
+      ejecuciones:
+        resolver: true
+      responsables:
+        resolver: true
+      archivosAdjuntos:
+        resolver: true
+      progreso:
+        resolver: true
+      ejecucionPresupuestaria:
+        resolver: true
+  Categoria:
+    fields:
+      padre:
+        resolver: true
+  Ejecucion:
+    fields:
+      actividad:
+        resolver: true
+      responsables:
+        resolver: true
+      archivosAdjuntos:
+        resolver: true
+  Grupo:
+    fields:
+      permisos:
+        resolver: true
+      usuarios:
+        resolver: true
+  Permiso:
+    fields:
+      grupos:
+        resolver: true
+      usuarios:
+        resolver: true
+  Programa:
+    fields:
+      fuenteFinanciamiento:
+        resolver: true
+      objetivoEstrategico:
+        resolver: true
+      proyectos:
+        resolver: true
+      responsables:
+        resolver: true
+      archivosAdjuntos:
+        resolver: true
+      progreso:
+        resolver: true
+      ejecucionPresupuestaria:
+        resolver: true
+      politicaPublica:
+        resolver: true
+      estrategiaArticulacion:
+        resolver: true        
+  Proyecto:
+    fields:
+      posicion:
+        resolver: true
+      programa:
+        resolver: true
+      actividades:
+        resolver: true
+      responsables:
+        resolver: true
+      archivosAdjuntos:
+        resolver: true
+      progreso:
+        resolver: true
+      ejecucionPresupuestaria:
+        resolver: true
+  Usuario:
+    fields:
+      grupo:
+        resolver: true
+      permisos:
+        resolver: true
+      programas:
+        resolver: true
+      proyectos:
+        resolver: true
+      actividades:
+        resolver: true
+      ejecuciones:
+        resolver: true
+  Gad:
+    fields:
+      sector:
+        resolver: true
+      categoria:
+        resolver: true
+      tipo:
+        resolver: true
+      periodos:
+        resolver: true
+  Periodo:
+    fields:
+      gads:
+        resolver: true
+  Diagvdependiente:
+    fields:
+      vindependientes:
+        resolver: true
+  Diagvindependiente:
+    fields:
+      indicadores:
+        resolver: true
+  Propobjetivoestrategico:
+    fields:
+      competenciaPrincipal:
+        resolver: true
+      objetivoPlanNacional:
+        resolver: true
+      ejec:
+        resolver: true

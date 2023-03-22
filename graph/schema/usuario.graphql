@@ -1,0 +1,48 @@
+type Usuario {
+    id: ID!
+    status: Boolean!
+    verificado: Boolean!
+    nombres: String!
+    apellidos: String!
+    nombreUsuario: String!
+    email: String!
+    grupoID: ID!
+    grupo: Grupo!
+    permisos: [Permiso]
+}
+
+input LoginUsuarioInput {
+    email: String!
+    password: String!
+}
+
+input RegistrarUsuarioInput {
+    nombres: String!
+    apellidos: String!
+    nombreUsuario: String!
+    email: String!
+    password: String!
+}
+
+input UpdateUsuarioInput {
+    id: ID!
+    status: Boolean
+    nombres: String
+    apellidos: String
+    nombreUsuario: String
+    email: String
+    grupoID: ID
+    permisosIDs: [ID]
+}
+
+input UsuarioInput {
+    ids: [ID]
+    status: Boolean
+    verificado: Boolean
+    nombres: String
+    apellidos: String
+    nombreUsuario: String
+    email: String
+    grupoID: ID
+    permisosIDs: [ID]
+}

@@ -1,0 +1,37 @@
+type Categoria {
+    id: ID!
+    nombre: String!
+    tipo: String!
+    padreID: ID!
+    padre: Categoria!
+}
+
+input SaveCategoriaInput {
+    nombre: String!
+    tipo: String!
+    padreID: ID
+}
+
+input UpdateCategoriaInput {
+    id: ID!
+    nombre: String
+    tipo: String
+    padreID: ID
+}
+
+input CategoriaInput {
+    ids: [ID]
+    nombre: String
+    tipo: String
+    padreID: ID
+}
+
+type CategoriaNodeConnection {
+  pageInfo: PageInfo!
+  edges: [CategoriaNodeEdge]!
+}
+
+type CategoriaNodeEdge {
+  cursor: String!
+  node: Categoria
+}
